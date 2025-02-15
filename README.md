@@ -1,1 +1,1 @@
-# iptn_embedding_platform-
+# itpn_embedding_platform
