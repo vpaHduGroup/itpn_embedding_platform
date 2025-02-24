@@ -82,8 +82,8 @@ nvidia-cuda-runtime-cu12 12.1
 ## 样例运行
 --rknn3588平台
     1.以onnx2rknn.py为例实现模型转换，可能需要根据具体报错特别修改rknn.config中disable_rules的值
-    2.通过run_onnx_map_max.py和run_rknn_map_max.py获得结果
+    2.通过run_rknn_map_max.py获得结果
 --Ascend310B1平台
     1.以atc命令实现onnx2om模型转化，具体可看官方文档，例子如下：
     atc --model=final_sim.onnx --framework=5 --output=final_sim.om --soc_version=Ascend310B1
-    2.run_om_map_max.py可根据run_rknn_map_max.py修改模型文件获得结果
+    2.通过run_om_map_max.py获得结果
