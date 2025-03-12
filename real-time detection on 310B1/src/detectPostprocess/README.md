@@ -2,4 +2,4 @@ detectPostprocess.cpp是原版yolov7模型的后处理
 
 detectPostprocess_yolo12.cpp是更新后yolov12模型的后处理
 
-注意：yolov12模型在转换的时候需要跟yolov7模型保持维度的统一，即输出1*8400*84，以及aipp配置必不可少
+注意：yolov12模型在转换的时候需要跟yolov7模型保持维度的统一，即输出1\*8400\*84，以及aipp配置必不可少
