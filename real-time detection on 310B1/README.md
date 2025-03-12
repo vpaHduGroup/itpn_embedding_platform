@@ -186,7 +186,9 @@
     atc --model=yolov7x.onnx --framework=5 --output=yolov7x --input_shape="images:1,3,640,640"  --soc_version=Ascend310B1  --insert_op_conf=aipp.cfg
     atc --model=yolov12n.onnx --framework=5 --output=yolov12n --input_shape="images:1,3,640,640"  --soc_version=Ascend310B1  --insert_op_conf=aipp.cfg
     ```
-
+    # 为了更快速运行样例，可通过以下链接直接下载模型：
+    链接: https://pan.baidu.com/s/1rBSBuoYcwKcRWQEwKBo56g?pwd=5bcw 提取码: 5bcw
+    
   - 样例编译
     
     需要根据使用不同的模型选择后处理cpp文件，该样例中添加了yolov12模型的后处理cpp文件，后处理文件修改主要注意以下两点：
