@@ -184,10 +184,18 @@
     wget https://obs-9be7.obs.cn-east-2.myhuaweicloud.com/003_Atc_Models/yolov7/aipp.cfg --no-check-certificate
     # 请使用与芯片名相对应的<soc_version>取值进行模型转换，然后再进行推理
     atc --model=yolov7x.onnx --framework=5 --output=yolov7x --input_shape="images:1,3,640,640"  --soc_version=Ascend310B1  --insert_op_conf=aipp.cfg
+    atc --model=yolov12n.onnx --framework=5 --output=yolov12n --input_shape="images:1,3,640,640"  --soc_version=Ascend310B1  --insert_op_conf=aipp.cfg
     ```
 
   - 样例编译
-
+    
+    需要根据使用不同的模型选择后处理cpp文件，该样例中添加了yolov12模型的后处理cpp文件，后处理文件修改主要注意以下两点：
+    1.模型输出的变化：
+    yolov7的输出是25200\*85,yolov12的输出是84\*8400,为了方便需要在导出onnx模型时修改维度，例如y.permute(0, 2, 1)
+    2.后处理置信度：
+    85对应x,y,w,h,confidence和COCO数据集80个类别,84对应x,y,w,h和COCO数据集80个类别
+    前者需要比较第五个参数--置信度处理，后者则需要比较80个类别的置信度处理
+    
     执行以下命令，执行编译脚本，开始样例编译。
     ```
     cd $HOME/samples/inference/modelInference/sampleYOLOV7MultiInput/scripts
@@ -214,6 +222,8 @@
     - 若输出数据类型配置为video
       输出数据存储在out/output文件夹下，为名称类似于：**XXXX.mp4** 的视频，其中X代表第x路。
 
+    - 若输出数据类型配置为imshow
+      可能会遇到远程显示错误，在板卡上运行代替远程连接(例如SSH)运行样例即可。
 ## 其他资源
 
 以下资源提供了对通用目标识别样例的更多了解，包括如何进行定制开发和性能提升：
